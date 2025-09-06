@@ -29,15 +29,18 @@ import TaskListEditorProvider from './tasklist-editor-provider';
 export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
 
 const DEFAULT_SERVER_PORT = '0';
+const JAR_FILE = path.resolve(
+    path.join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.3.0-glsp.jar')
+);
+
 
 export async function activate(context: vscode.ExtensionContext): Promise<void> {
     // Start server process using quickstart component
     let serverProcess: GlspSocketServerLauncher | undefined;
 
     if (process.env.TASKLIST_SERVER_DEBUG !== 'true') {
-        const modulePath = vscode.Uri.joinPath(context.extensionUri, 'dist', 'tasklist-glsp-server.js').fsPath;
         serverProcess = new GlspSocketServerLauncher({
-            executable: modulePath,
+            executable: JAR_FILE,
             socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
             additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', LOG_DIR],
             logging: true

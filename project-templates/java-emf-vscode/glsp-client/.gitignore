@@ -1,0 +1,7 @@
+tasklist-glsp/dist
+tasklist-vscode/extension/dist
+tasklist-vscode/webview/dist
+node_modules
+tasklist-glsp/node_modules
+tasklist-vscode/extension/node_modules
+tasklist-vscode/webview/node_modules
