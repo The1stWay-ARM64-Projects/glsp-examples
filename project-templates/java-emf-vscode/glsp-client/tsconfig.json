@@ -9,7 +9,10 @@
       "path": "./tasklist-glsp"
     },
     {
-      "path": "./tasklist-theia"
+      "path": "./tasklist-vscode/extension"
+    },
+    {
+      "path": "./tasklist-vscode/webview"
     }
   ]
 }

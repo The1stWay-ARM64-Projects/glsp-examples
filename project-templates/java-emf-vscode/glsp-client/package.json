@@ -17,36 +17,42 @@
       "name": "Eclipse GLSP Project",
       "email": "glsp-dev@eclipse.org",
       "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    },
+    {
+      "name": "Reliable Software Enginerring (RSE) Lab, University of Indonesia",
+      "email": "rse@cs.ui.ac.id",
+      "url": "https://prices.cs.ui.ac.id/"
     }
   ],
   "workspaces": [
     "tasklist-glsp",
-    "tasklist-theia",
-    "tasklist-browser-app"
+    "tasklist-vscode/webview",
+    "tasklist-vscode/extension"
   ],
   "scripts": {
     "all": "yarn clean && yarn install && yarn lint",
-    "browser": " yarn --cwd tasklist-browser-app",
-    "build": "yarn compile && yarn browser bundle",
-    "check:theia-version": "theia check:theia-version",
+    "build": "yarn compile && yarn bundle",
+    "bundle": "yarn server bundle && yarn webview bundle && yarn extension bundle",
     "clean": "lerna run clean",
     "compile": "tsc -b",
+    "extension": "yarn --cwd tasklist-vscode/extension",
     "lint": "eslint --ext .ts,.tsx .",
     "lint:ci": "yarn lint --output-file eslint_report.json --format json",
-    "prepare": "yarn build && yarn check:theia-version",
-    "rebuild:browser": "theia rebuild:browser",
-    "start": "yarn browser start",
-    "start:external": "yarn browser start:external",
-    "watch": "concurrently --kill-others -n tsc,browser -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s browser watch\""
+    "package": "yarn extension package",
+    "prepare": "yarn build",
+    "server": "yarn --cwd tasklist-glsp-server",
+    "watch": "concurrently --kill-others -n tsc,ext,server -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s extension watch:bundle\" \"yarn -s server watch:bundle\"",
+    "webview": "yarn --cwd tasklist-vscode/webview"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "2.3.0",
+    "@types/node": "18.x",
     "concurrently": "^8.2.2",
     "lerna": "8.1.7",
     "typescript": "^5.5.3"
   },
   "engines": {
-    "node": ">=16.11.0",
+    "node": ">=16.18",
     "yarn": ">=1.7.0 <2.x.x"
   }
 }

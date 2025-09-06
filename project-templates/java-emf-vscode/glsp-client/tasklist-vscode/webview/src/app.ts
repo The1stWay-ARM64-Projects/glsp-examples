@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022 EclipseSource and others.
+ * Copyright (c) 2022-2023 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,12 +14,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-import { GLSPDiagramLanguage } from '@eclipse-glsp/theia-integration/lib/common';
+import 'reflect-metadata';
 
-export const TaskListLanguage: GLSPDiagramLanguage = {
-    contributionId: 'TaskList',
-    label: 'TaskList Diagram',
-    diagramType: 'tasklist-diagram',
-    iconClass: 'codicon codicon-tasklist',
-    fileExtensions: ['.tasklist']
-};
+import { ContainerConfiguration } from '@eclipse-glsp/client';
+import { GLSPStarter } from '@eclipse-glsp/vscode-integration-webview';
+import '@eclipse-glsp/vscode-integration-webview/css/glsp-vscode.css';
+import { Container } from 'inversify';
+import { initializeTasklistDiagramContainer } from 'tasklist-glsp-client';
+
+class TaskListStarter extends GLSPStarter {
+    createContainer(...containerConfiguration: ContainerConfiguration): Container {
+        return initializeTasklistDiagramContainer(new Container(), ...containerConfiguration);
+    }
+}
+
+new TaskListStarter();
