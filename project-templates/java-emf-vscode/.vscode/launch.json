@@ -45,22 +45,17 @@
       }
     },
     {
-      "type": "node",
+      "type": "java",
       "request": "launch",
       "name": "Launch TaskList GLSP Server",
-      "program": "${workspaceFolder}/tasklist-glsp-server/lib/app.js",
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true,
-      "outFiles": [
-        "${workspaceFolder}/node_modules/@eclipse-glsp/**/*.js",
-        "${workspaceFolder}/tasklist-glsp-server/lib/**/*.js"
+      "mainClass": "org.eclipse.glsp.example.javaemf.launch.TaskListServerLauncher",
+      "args": ["--port", "5007"],
+      "vmArgs": [],
+      "cwd": "${workspaceFolder}",
+      "classPaths": [
+          "${workspaceFolder}/glsp-server/target/org.eclipse.glsp.example.javaemf-2.3.0-glsp.jar"
       ],
-      "args": ["--port=5007"],
-      "smartStep": true,
-      "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std"
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ],
   "compounds": [

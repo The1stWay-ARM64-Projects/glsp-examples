@@ -2,7 +2,7 @@
 
 ## GLSP Server
 
-This directory provides the initial setup of the package architecture and environment for a node-based GLSP Server. 
+This directory provides the initial setup of the package architecture and environment for a node-based GLSP Server.
 It is based on the `TaskList` example diagram language.
 
 For more detailed instructions and information please confer to the [README](../README.md) in the parent directory.

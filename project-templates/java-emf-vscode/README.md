@@ -13,21 +13,21 @@ To explore alternative project templates or learn more about developing GLSP-bas
 
 This project is structured as follows:
 
--   [`tasklist-glsp-client`](./tasklist-glsp-client): diagram client configuring the views for rendering and the user interface modules
+-   [`glsp-client/tasklist-glsp`](./glsp-client/tasklist-glsp): diagram client configuring the views for rendering and the user interface modules
 -   [`tasklist-vscode`](./tasklist-vscode): glue code for integrating the editor into VS Code
     -   [`extension`](./tasklist-vscode/extension): VS Code extension responsible for starting the glsp-server and registering the `webview` as a custom editor
     -   [`webview`](./tasklist-vscode/webview): integration of the `tasklist-glsp` diagram as webview
 -   [`workspace`](./workspace): contains an example file that can be opened with this diagram editor
--   [`tasklist-glsp-server`](./tasklist-glsp-server):
-    -   [`src/diagram`](./tasklist-glsp-server/src/diagram): dependency injection module of the server and diagram configuration
-    -   [`src/handler`](./tasklist-glsp-server/src/handler): handlers for the diagram-specific actions
-    -   [`src/model`](./tasklist-glsp-server/src/model): all source model, graphical model and model state related files
+-   [`glsp-server`](./glsp-server):
+    -   [`src/diagram`](./glsp-server/src/diagram): dependency injection module of the server and diagram configuration
+    -   [`src/handler`](./glsp-server/src/handler): handlers for the diagram-specific actions
+    -   [`src/model`](./glsp-server/src/model): all source model, graphical model and model state related files
 
 The most important entry points are:
 
--   [`tasklist-glsp-client/src/tasklist-diagram-module.ts`](./tasklist-glsp-client/src/tasklist-diagram-module.ts): dependency injection module of the client
+-   [`glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts`](./glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts): dependency injection module of the client
 -   [`glsp-client/tasklist-vscode/extension/package.json`](glsp-client/tasklist-vscode/extension/package.json): VS Code extension entry point
--   [`tasklist-glsp-server/src/diagram/tasklist-diagram-module.ts`](./tasklist-glsp-server/src/diagram/tasklist-diagram-module.ts): dependency injection module of the server
+-   [`glsp-server/src/diagram/tasklist-diagram-module.ts`](./glsp-server/src/diagram/tasklist-diagram-module.ts): dependency injection module of the server
 
 ## Prerequisites
 
